@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "AFS",
+    "version": "1.0",
+    "description": "Transfer Data from Ancestory to Family Search",
+    "background": {
+        "persistent": false,
+        "scripts":["js/background.js"]
+    },
+    "browser_action":{
+        "default_title":"AFS",
+        "default_popup":"popup.html"
+    },
+    "content_scripts":[
+        {
+            "matches":["<all_urls>"],
+            "js": ["js/content.js"]
+        }
+    ],
+    "permissions":["tabs"]
+}

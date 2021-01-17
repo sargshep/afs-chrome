@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>AFS Chrome Extension</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div class="main">
+            <div id="auth" class="auth">
+                <div class="auth_head">
+                    <h2 class="h1">AFS</h2>
+                </div>
+                <div class="auth_body">
+                    <div class="auth_input_div">
+                        <input id="username" class="username" type="text" placeholder="Username" />
+                    <input id="password" class="password" type="password" placeholder="Password" />
+                    </div>
+                    <div class="auth_btn_div">
+                        <button id="auth_btn" class="auth_btn">Sign In</button>
+                    </div>
+                </div>
+            </div>
+            <div id="index" class="index">
+                <div class="index_head">
+                    <h2 class='h2'>AFS</h2>
+                </div>
+                <div class="index_body">
+                    <div class="index_text_div">
+                        <p class="p1">Current Version: <span id="ext_version">FREE</span></p>
+                    </div>
+                    <div class="index_btn_div">
+                        <button id="u2p_btn" class="u2p_btn">Upgrade to Premium</button>
+                    </div>
+                </div>
+            </div>
+            <div id="upgrade" class="upgrade">
+                <div class="upgrade_head">
+                    <h2 class="h3">UPGRADE</h2>
+                </div>
+                <div class="upgrade_body">
+                    <div class="upgrade_input_div">
+                        <input id="licensekey" class="licensekey" type="password" placeholder="License Key" />
+                    </div>
+                    <div class="upgrade_btn_div">
+                        <button id="activate_btn" class="activate_btn">Activate</button>
+                    </div>
+                   <div class="upgrade_a_div">
+                        <a href="#" id="a_license_key" class="a_license_key">GET LICENSE KEY</a>
+                   </div>
+                </div>
+            </div>
+            <div id="alert" class="alert">
+                <div class="alert_div">
+                    <p class="alert_msg" id="alert_msg"></p>
+                </div>
+            </div>
+        </div>
+        <script src="js/popup.js" ></script>
+    </body>
+</html>
