@@ -51,9 +51,9 @@ function upgrade () {
             body: JSON.stringify({key: license_key})
         }
         fetch("https://script.google.com/macros/s/AKfycbwSM8u07N6RM1W7hQDP82WMCXBugKar8_jKqmjodYj5gz5swh_gYTc8_Q/exec", options).then(res =>{
-             return res.text();
+             return res.json();
         }).then(res2 =>{
-            if(res2 == "active"){
+            if(res2.status == "active"){
                 document.querySelector("#upgrade").style.display = "none";
                 document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "PREMIUM";
@@ -67,7 +67,7 @@ function upgrade () {
                   document.querySelector("#alert_msg").innerHTML = "";  
                 }, 3000);
                 
-            } else if (res2 == "inactive"){
+            } else if (res2.status == "inactive"){
                 // document.querySelector("#upgrade").style.display = "none";
                 // document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "FREE";
@@ -79,7 +79,7 @@ function upgrade () {
                 setTimeout(()=>{
                     document.querySelector("#alert_msg").innerHTML = "";
                 }, 3000);
-            } else if (res2 == "user doesnot exist"){
+            } else if (res2.status == "user doesnot exist"){
                 // document.querySelector("#upgrade").style.display = "none";
                 // document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "FREE";
