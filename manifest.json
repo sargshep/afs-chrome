@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "AFS",
+    "name": "A2F",
     "version": "1.0",
     "description": "Transfer Data from Ancestory to Family Search",
     "background": {
