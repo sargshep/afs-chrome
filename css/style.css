@@ -33,6 +33,10 @@ h2{
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.username:focus{
+    outline: none;
+    border-color: #000000;
+}
 .password{
     text-align: center;
     margin-top: 25px;
@@ -42,6 +46,10 @@ h2{
     border-color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.password:focus{
+    outline: none;
+    border-color: #000000;
 }
 .auth_btn_div{
     text-align: center;
@@ -56,6 +64,14 @@ h2{
     color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.auth_btn:hover{
+    background-color: #8CA74C
+}
+.auth_btn:focus{
+    outline: none;
+    border-color: #8CA74C;
 }
 .index{
     display: none;
@@ -97,6 +113,14 @@ h2{
     color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.u2p_btn:hover{
+    background-color: #8CA74C
+}
+.u2p_btn:focus{
+    outline: none;
+    border-color: #8CA74C;
 }
 .upgrade{
     display: none;
@@ -129,6 +153,10 @@ h2{
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.licensekey:focus{
+    outline: none;
+    border-color: #000000;
+}
 .upgrade_btn_div{
     text-align: center;
 }
@@ -142,6 +170,14 @@ h2{
     color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.activate_btn:hover{
+    background-color: #8CA74C;
+}
+.activate_btn:focus{
+    outline: none;
+    border-color: #8CA74C;
 }
 .upgrade_a_div{
     text-align: center;
@@ -153,13 +189,17 @@ h2{
     color: #000000;
     font-weight: normal;
 }
+.a_license_key:hover{
+    background-color: #000000;
+    color: #FFFFFF;
+}
 .alert_msg{
     font-size: 22px;
     text-align: center;
     font-weight: bold;
 }
 .back_btn{
-    background-color:#000000;
+    background-color:#363333;
     text-align: center;
     width: 420px;
     height: 34px;
@@ -168,4 +208,12 @@ h2{
     color: #FFFFFF;
     border-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.back_btn:hover{
+    background-color: #000000;
+}
+.back_btn:focus{
+    outline: none;
+    border-color: #000000;
 }

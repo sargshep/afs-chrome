@@ -1,13 +1,54 @@
+chrome.storage.local.get(['login_status'], (ite) => {
+    if (ite.login_status === undefined) {
+        chrome.storage.local.set({ login_status: "Inactive" });
+        ite.login_status = "Inactive";
+    }
+    if (ite.login_status !== undefined) {
+        if (ite.login_status == "Inactive") {
+            document.querySelector("#auth").style.display = "block";
+            document.querySelector("#index").style.display = "none";
+            document.querySelector("#upgrade").style.display = "none";
+        } else if (ite.login_status == "Active") {
+            document.querySelector("#auth").style.display = "none";
+            document.querySelector("#index").style.display = "block";
+            document.querySelector("#upgrade").style.display = "none";
+        }
+    }
+})
+
+chrome.storage.local.get(['upgrade_status'], (ito) => {
+    if(ito.upgrade_status === undefined){
+        chrome.storage.local.set({ upgrade_status: "Inactive"});
+        ito.upgrade_status = "Inactive";
+    }
+    if(ito.upgrade_status !== undefined){
+        if(ito.upgrade_status == "Inactive"){
+            document.querySelector("#auth").style.display = "none";
+            document.querySelector("#index").style.display = "block";
+            document.querySelector("#upgrade").style.display = "none";
+            document.querySelector("#ext_version").innerHTML = "FREE";
+        } else if (ito.upgrade_status == "Active"){
+            document.querySelector("#auth").style.display = "none";
+            document.querySelector("#index").style.display = "block";
+            document.querySelector("#upgrade").style.display = "none";
+            document.querySelector("#ext_version").innerHTML = "PREMIUM";
+            document.querySelector("#u2p_btn").style.display = "none";
+        }
+    }
+})
+
+
 document.querySelector("#auth_btn").addEventListener('click', signin);
 
-function signin () {
+function signin() {
     var username = document.querySelector("#username").value;
     var password = document.querySelector('#password').value;
-    if(username != "" && password != ""){
+    if (username != "" && password != "") {
         // function to authenticate the user
-        if(username == "admin" && password == "pass"){
+        if (username == "admin" && password == "pass") {
             document.querySelector("#auth").style.display = "none";
             document.querySelector('#index').style.display = "block";
+            chrome.storage.local.set({ login_status: "Active" });
             console.log("User Signed In");
         } else {
             console.log("Invalid Username/Password");
@@ -17,7 +58,7 @@ function signin () {
                 document.querySelector("#alert_msg").innerHTML = "";
             }, 3000);
         }
-        
+
     } else {
         console.log("Please Fill the Blank Fields!");
         document.querySelector("#alert_msg").style.color = "Red";
@@ -41,33 +82,33 @@ function upgrade2premium() {
 
 document.querySelector("#activate_btn").addEventListener('click', upgrade);
 
-function upgrade () {
+function upgrade() {
     var license_key = document.querySelector("#licensekey").value;
-    if(license_key != ""){
+    if (license_key != "") {
         document.querySelector("#activate_btn").innerHTML = "Activating...";
         // function to check for license key and upgrade the user
         var options = {
             method: "POST",
-            body: JSON.stringify({key: license_key})
+            body: JSON.stringify({ key: license_key })
         }
-        fetch("https://script.google.com/macros/s/AKfycbwSM8u07N6RM1W7hQDP82WMCXBugKar8_jKqmjodYj5gz5swh_gYTc8_Q/exec", options).then(res =>{
-             return res.json();
-        }).then(res2 =>{
-            if(res2.status == "active"){
+        fetch("https://script.google.com/macros/s/AKfycbwSM8u07N6RM1W7hQDP82WMCXBugKar8_jKqmjodYj5gz5swh_gYTc8_Q/exec", options).then(res => {
+            return res.json();
+        }).then(res2 => {
+            if (res2.status == "active") {
                 document.querySelector("#upgrade").style.display = "none";
                 document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "PREMIUM";
                 document.querySelector("#u2p_btn").style.display = "none";
-                console.log("User Upgraded"); 
+                console.log("User Upgraded");
                 document.querySelector("#alert_msg").style.color = "Green";
                 document.querySelector("#alert_msg").innerHTML = "Your Membership has been Upgraded";
                 document.querySelector("#activate_btn").innerHTML = "Activate";
                 document.querySelector("#licensekey").value = "";
                 setTimeout(() => {
-                  document.querySelector("#alert_msg").innerHTML = "";  
+                    document.querySelector("#alert_msg").innerHTML = "";
                 }, 3000);
-                
-            } else if (res2.status == "inactive"){
+
+            } else if (res2.status == "inactive") {
                 // document.querySelector("#upgrade").style.display = "none";
                 // document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "FREE";
@@ -76,10 +117,10 @@ function upgrade () {
                 document.querySelector("#alert_msg").innerHTML = "User Subscription has been Cancelled";
                 document.querySelector("#activate_btn").innerHTML = "Activate";
                 document.querySelector("#licensekey").value = "";
-                setTimeout(()=>{
+                setTimeout(() => {
                     document.querySelector("#alert_msg").innerHTML = "";
                 }, 3000);
-            } else if (res2.status == "user doesnot exist"){
+            } else if (res2.status == "user doesnot exist") {
                 // document.querySelector("#upgrade").style.display = "none";
                 // document.querySelector("#index").style.display = "block";
                 document.querySelector("#ext_version").innerHTML = "FREE";
@@ -88,12 +129,12 @@ function upgrade () {
                 document.querySelector("#alert_msg").innerHTML = "Invalid License Key";
                 document.querySelector("#activate_btn").innerHTML = "Activate";
                 document.querySelector("#licensekey").value = "";
-                setTimeout(()=>{
+                setTimeout(() => {
                     document.querySelector("#alert_msg").innerHTML = "";
                 }, 3000);
             }
         })
-        
+
 
     } else {
         console.log("Please Insert License Key!");
@@ -108,7 +149,7 @@ function upgrade () {
 
 document.querySelector("#back_btn").addEventListener("click", back);
 
-function back () {
+function back() {
     // function to move back to index screen
     document.querySelector("#upgrade").style.display = "none";
     document.querySelector("#index").style.display = "block";
